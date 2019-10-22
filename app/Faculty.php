@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Faculty extends Model
 {
-    protected $fillable = ['faculty_name', 'faculty_desc', 'active_fg'];
+    protected $primaryKey = 'id';
+    protected $guarded = ['id'];
 }

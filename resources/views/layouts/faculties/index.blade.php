@@ -19,14 +19,14 @@
                 <td>{{ $faculty->faculty_desc }}</td>
                 <td>
                     @if($faculty->active_fg==1)
-                        <button class="btn-xs btn-info">Active</button>
+                        <button class="btn-xs btn-success">Active</button>
                     @else
                         <button class="btn-xs btn-info">Inactive</button>
                     @endif
                 </td>
                 <td>
-                        <button class="btn-xs btn-info">Edit</button>
-                        <button class="btn-xs btn-danger">Delete</button>
+                    <a href="{{ url('faculties/'.$faculty->id.'/edit') }}"><button class="btn-xs btn-info">Edit</button></a>|
+                    <button class="btn-xs btn-danger deleteRow" data-action="{{ url('faculties/'.$faculty->id) }}">Delete</button>
                 </td>
             </tr>
             @endforeach

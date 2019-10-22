@@ -47,12 +47,19 @@
             </div>
         </div>
         <div class="col-md-9">
-            @include('layouts.messages')
+            @include('layouts.inc.messages')
             @yield('content')
         </div>
     </div>
 </div>
 
+<script>
+
+    // delete row
+    $(document).on('click','.deleteRow', function(){
+        alert('Are you sure want to delete ?');
+    });
+</script>
 
 </body>
 </html>

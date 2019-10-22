@@ -39,15 +39,13 @@ class FacultyController extends Controller
         $this->validate($request,[
             'faculty_name' => 'required'
         ]);
-        $faculty = new Faculty();
-        $data = array(
-            'faculty_name' => $request->faculty_name,
-            'faculty_desc' => $request->faculty_desc,
-            'active_fg'    => $request->active_fg
-        );
-        //$this->pr($data);
-        $faculty->save($data);
-        redirect('/faculties')->with('success', 'Faculty added successfully');
+        $faculty = new Faculty([
+            'faculty_name' => $request->input('faculty_name'),
+            'faculty_desc' => $request->input('faculty_desc'),
+            'active_fg'    => $request->input('active_fg')
+        ]);
+        $faculty->save();
+        return redirect('/faculties')->with('success', 'Faculty added successfully');
 
     }
 
@@ -68,9 +66,10 @@ class FacultyController extends Controller
      * @param  \App\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function edit(Faculty $faculty)
+    public function edit($id)
     {
-        //
+        $faculty = Faculty::find($id);
+        return view('layouts.faculties.edit', compact('faculty'));
     }
 
     /**
@@ -80,9 +79,18 @@ class FacultyController extends Controller
      * @param  \App\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Faculty $faculty)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'faculty_name' => 'required'
+        ]);
+        Faculty::find($id)->update([
+            'faculty_name' => $request->input('faculty_name'),
+            'faculty_desc' => $request->input('faculty_desc'),
+            'active_fg'    => $request->input('active_fg')
+        ]);
+
+        return redirect('/faculties')->with('success', 'Faculty updated successfully');
     }
 
     /**
@@ -91,8 +99,11 @@ class FacultyController extends Controller
      * @param  \App\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Faculty $faculty)
+    public function destroy($id)
     {
-        //
+        echo $id;exit();
+        $faculty = Faculty::find($id);
+        $faculty->delete();
+        return redirect('/faculties')->with('success', 'Faculty deleted successfully');
     }
 }
