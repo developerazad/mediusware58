@@ -14,7 +14,7 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::paginate(3);
+        $faculties = Faculty::paginate(4);
         return view('layouts.faculties.index', compact('faculties'));
     }
 
