@@ -2,17 +2,17 @@
 
 @section('content')
     <table class="table">
-        <thead class="thead-dark">
-            <tr class="bg-info">
-                <th scope="col">Sl.</th>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Status</th>
-                <th scope="col">Action</th>
-            </tr>
+        <thead class="thead-light">
+        <tr class="bg-info">
+            <th scope="col">Sl.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach($faculties as $key => $faculty)
+        @foreach($faculties as $key => $faculty)
             <tr>
                 <th scope="row">{{ ++$key }}</th>
                 <td>{{ $faculty->faculty_name }}</td>
@@ -29,11 +29,10 @@
                     <button class="btn-xs btn-danger deleteRow" data-action="{{ url('faculties/'.$faculty->id) }}">Delete</button>
                 </td>
             </tr>
-            @endforeach
+        @endforeach
         </tbody>
     </table>
-    <button class="btn btn-default float-left">Back</button>
-    <a href="{{ url('faculties/create') }}"><button class="btn btn-info float-right">Add New</button></a>
+    <a href="{{ url('faculties/create') }}"><button class="btn btn-info float-left">Add New</button></a>
 
-
+    <span class="float-right">{{ $faculties->links() }}</span>
 @endsection

@@ -14,7 +14,7 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all();
+        $faculties = Faculty::paginate(3);
         return view('layouts.faculties.index', compact('faculties'));
     }
 
@@ -101,7 +101,6 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        echo $id;exit();
         $faculty = Faculty::find($id);
         $faculty->delete();
         return redirect('/faculties')->with('success', 'Faculty deleted successfully');

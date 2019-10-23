@@ -20,13 +20,10 @@
                 <option value="0" @if($faculty->active_fg==0) selected @endif>Inactive</option>
             </select>
         </div>
-
-        <a href="#"><button class="btn btn-default float-left">Back</button></a>
-        <button type="submit" class="btn btn-info float-right">Submit</button>
+        <button type="submit" class="btn btn-info float-left">Submit</button>
 
     </form>
-
-
+    <a href="{{ url('/faculties') }}"><button class="btn btn-default ml-2">Back</button></a>
 
 
 @endsection
