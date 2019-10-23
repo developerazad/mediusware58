@@ -14,7 +14,7 @@
             <select name="faculty_id" class="form-control">
                 <option value="">Select One</option>
                 @foreach($faculties as $faculty)
-                    <option value="{{ $faculty->id }}" >{{ $faculty->faculty_name }}</option>
+                    <option value="{{ $faculty->id }}" @if($faculty->id==$department->faculty_id) selected @endif>{{ $faculty->faculty_name }}</option>
                 @endforeach
             </select>
         </div>

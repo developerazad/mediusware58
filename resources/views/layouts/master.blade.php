@@ -72,7 +72,21 @@
             });
         }
 
-    })
+    });
+    // file upload validation
+    $('.photo').bind('change', function () {
+        var fileSize = this.files[0].size;
+        var maxSize  = 500000;// 500kb
+        if(fileSize > maxSize){
+            alert('Sorry! Maximum upload size 500kb');
+            $('.photo').val('');
+        }
+        var validExtension = ['jpg','jpeg','png','JPG','JPEG','PNG'];
+        if($.inArray($(this).val().split('.').pop().toLowerCase(), validExtension) == -1){
+            alert('Sorry! Only jpg, jpeg and png formats are allowed');
+            $('.photo').val('');
+        }
+    });
 </script>
 
 </body>

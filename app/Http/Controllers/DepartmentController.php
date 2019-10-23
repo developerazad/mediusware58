@@ -16,7 +16,6 @@ class DepartmentController extends Controller
     public function index()
     {
         $departments = Department::with('Faculty')->paginate(4);
-        //$this->pr($departments);
         return view('layouts.departments.index', compact('departments'));
     }
 
@@ -71,7 +70,7 @@ class DepartmentController extends Controller
     public function edit($id)
     {
         $faculties  = Faculty::all();
-        $department = Department::find($id);
+        $department = Department::with('Faculty')->find($id);
         return view('layouts.departments.edit', compact('faculties', 'department'));
     }
 
