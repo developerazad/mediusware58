@@ -26,7 +26,7 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container-fluid">
 
     <div class="row" style="margin-top: 75px!important;">
         <div class="col-md-3">

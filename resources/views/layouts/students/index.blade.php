@@ -7,11 +7,11 @@
                 <tr class="bg-info">
                     <th scope="col">Sl.</th>
                     <th scope="col">Name</th>
-                    <th scope="col">ID Card No</th>
+                    <th scope="col">ID No</th>
                     <th scope="col">Faculty</th>
                     <th scope="col">Department</th>
                     <th scope="col">Photo</th>
-                    <th scope="col">Action</th>
+                    <th scope="col" style="width: 15%;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,8 +20,8 @@
                     <th scope="row">{{ ++$key }}</th>
                     <td>{{ $student->student_name }}</td>
                     <td>ID#{{ $student->student_id }}</td>
-                    <td>{{ $student->faculty_id }}</td>
-                    <td>{{ $student->department_id }}</td>
+                    <td>{{ $student->faculty->faculty_name }}</td>
+                    <td>{{ $student->department->dept_name }}</td>
                     <td>
                         @if(!empty($student->photo))
                             <img src="{{ asset('/uploads/students/'.$student->photo) }}" style="width: 45px;height: 45px;">
